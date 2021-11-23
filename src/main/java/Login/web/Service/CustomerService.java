@@ -1,21 +1,22 @@
 package Login.web.Service;
 
-import java.util.Date;
+
 import java.util.Optional;
 
-import org.hibernate.engine.query.spi.sql.NativeSQLQueryCollectionReturn;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Login.web.Entity.Customer;
+
 import Login.web.Entity.User;
 import Login.web.Repository.CustomerRepository;
+
 import Login.web.Repository.UserRepository;
 
 @Service
 public class CustomerService {
-	@Autowired
-	private UserService userService;
+	
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -36,6 +37,7 @@ public class CustomerService {
 			customer.setCity(city);
 			customer.setCountry(country);
 			customer.setEmail(email);
+			customer.setAlta(true);
 			customer.setUser(user);
 			
 			customerRepository.save(customer);
@@ -61,6 +63,7 @@ public class CustomerService {
 			customer.setCity(city);
 			customer.setCountry(country);
 			customer.setEmail(email);
+			customer.setAlta(true);
 			customer.setUser(user);
 			
 			customerRepository.save(customer);
@@ -73,19 +76,17 @@ public class CustomerService {
 	}
 		
 	}
-	//revisar
-	public void removeUser(String id,String idUser) throws Exception {
-		Optional<Customer>respOptional=customerRepository.findById(idUser);
+	
+	public void removeCustomer(String id) throws Exception {
+		Optional<Customer>respOptional=customerRepository.findById(id);
 		if (respOptional.isPresent()) {
+			//mirar si el cliente tiene alguna reservacion vigente
+			//
 			Customer customer=respOptional.get();
-			Optional<User>respOptionalUser=userRepository.findById(idUser);
-			if(respOptionalUser.isPresent()) {
-				User user=respOptionalUser.get();
-				user.setDischarge(new Date());
-				userRepository.save(user);
-			}
+			customer.setAlta(true);
+			customerRepository.save(customer);
 		}else {
-			throw new Exception();
+			throw new Exception("The client trying to unsubscribe does not exist.");
 		}
 	}
 	

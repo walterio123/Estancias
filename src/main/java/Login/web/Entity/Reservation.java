@@ -31,12 +31,22 @@ public class Reservation implements Serializable{
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateTo;
+	private boolean alta;
 	
 	@OneToOne
 	private Customer customer;
 	
 	@OneToOne
 	private House house;
+	
+
+	public boolean isAlta() {
+		return alta;
+	}
+
+	public void setAlta(boolean alta) {
+		this.alta = alta;
+	}
 
 	public String getId() {
 		return id;

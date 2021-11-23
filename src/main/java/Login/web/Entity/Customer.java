@@ -28,10 +28,20 @@ public class Customer implements Serializable{
 	private String city;
 	private String country;
 	private String email;
+	private boolean alta;
 	
 	@OneToOne
 	private User user;
 	
+	
+	public boolean isAlta() {
+		return alta;
+	}
+
+	public void setAlta(boolean alta) {
+		this.alta = alta;
+	}
+
 	public String getId() {
 		return id;
 	}
