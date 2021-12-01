@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -32,7 +33,7 @@ public class Family implements Serializable{
 
 
 	@OneToOne
-	private User user;
+	private UserEst userEst;
 	
 	@OneToOne
 	private House house;
@@ -93,12 +94,12 @@ public class Family implements Serializable{
 		this.email = email;
 	}
 
-	public User getUser() {
-		return user;
+	public UserEst getUser() {
+		return userEst;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(UserEst userEst) {
+		this.userEst = userEst;
 	}
 
 	public House getHouse() {

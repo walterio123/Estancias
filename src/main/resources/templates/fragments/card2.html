@@ -1,0 +1,39 @@
+<div th:fragment="_card" class="card my-4">
+<div class="col-12 mb-5">
+    <div class="card flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front "><!-- frente de la tarjeta -->
+                <img th:if="${house.foto == null}" src="../img/casaneutra.jpg" alt="" class="card-img-top img-fluid"> 
+     			<img th:unless="${house.foto == null}" th:src="${'/foto/house/' + house.id}" class="card-img-top img-fluid "  style="max-height: 150px;"><!-- Imagen frontal -->
+           
+            <h3 class="card-title" >Price $:<span th:text="${house.price}"></span></h3>
+            <p class="card-text">Tipe Place: <span th:text="${house.tipePlace}"></span></p>
+       		<p class="card-text">Street: <span th:text="${house.street}"></span></p>
+        	<p class="card-text">Number: <span th:text="${house.number}"></span></p>
+            <a href="#" class="btn btn-outline-dark bg-warning">Comentary</a> 
+			<a href="#" class="btn btn-outline-white bg-success" type"submit">  Rent  </a>  
+            </div>
+            <div class="flip-card-back"><!-- reverso de la tarjeta -->
+                <div class="row no-gutters">
+                    <div class="card-body">
+                       
+        
+        <p class="card-text">Postal Code: <span th:text="${house.postalCode}"></span></p>
+        <p class="card-text">City: <span th:text="${house.city}"></span></p>
+        <p class="card-text">Country: <span th:text="${house.country}"></span></p>
+        <h4>Available</h4>
+        <p th:if="${house.alta} == true"   class="card-text">Date From: <span th:text="${house.dateFrom}"></span></p>
+        <p th:if="${house.alta} == true"   class="card-text">Date To: <span th:text="${house.dateTo}"></span></p>
+        <p th:if="${house.alta} == false">Not available</p>
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+
+    

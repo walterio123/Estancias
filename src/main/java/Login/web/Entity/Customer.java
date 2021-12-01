@@ -31,7 +31,7 @@ public class Customer implements Serializable{
 	private boolean alta;
 	
 	@OneToOne
-	private User user;
+	private UserEst userEst;
 	
 	
 	public boolean isAlta() {
@@ -106,12 +106,12 @@ public class Customer implements Serializable{
 		this.email = email;
 	}
 
-	public User getUser() {
-		return user;
+	public UserEst getUser() {
+		return userEst;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(UserEst userEst) {
+		this.userEst = userEst;
 	}
 
 	public Customer() {

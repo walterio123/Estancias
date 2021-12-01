@@ -1,6 +1,6 @@
 
 <head>
-
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -22,27 +22,31 @@
 
 </head>
 
-<body>
+<body class="">
 
-	<div class="container">
+	<div class="container ">
     <div class="row">
         <div class="col-sm-6 col-md-4 col-md-offset-4">
-            <h1 class="text-center login-title">Sign in to continue to Estancias....</h1>
+            <h1 class=" login-title text-center text-white">Sign in to continue to Estancias....</h1>
             <div class="account-wall">
                 <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                     alt="">
-                <form class="form-signin">
-                <input type="text" class="form-control" placeholder="Email" required autofocus>
-                <input type="password" class="form-control" placeholder="Password" required>
+                <form class="form-signin" action="/logincheck" method="POST">
+                <p th:if="${error != null}" th:text="${error}" style="color:red; font-size:  11px; margin-bottom: -12px"></p>
+                <p th:if="${logout != null}" th:text="${logout}" style="color:green; font-size: 11px;margin-bottom: -12px"></p>
+				
+               <p th:if="${logout != null}" th:text="${logout}" style="color:green"></p> 
+                <input type="email" class="form-control" placeholder="Email" required autofocus name="username">
+                <input type="password" class="form-control" placeholder="Password" name="password">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Sign in</button>
                 
                 <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
                 </form>
             </div>
-            <a href="#" class="text-center new-account">Create an account </a>
+            <a th:href="@{/registro}" class="text-center new-account">Create an account </a>
         </div>
     </div>
 </div>
 </body>
-
+</html>

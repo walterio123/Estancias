@@ -47,6 +47,16 @@ public class House implements Serializable{
 	
 	@OneToOne
 	private Comment comment;
+	@OneToOne
+	private Foto foto;
+
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
 
 	public boolean isAlta() {
 		return alta;

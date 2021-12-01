@@ -1,0 +1,155 @@
+
+body{
+	background-image: url(../img/fondo.jpg);
+	background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+	
+	
+}
+.navbar{
+	color:green;
+}
+.main{
+	background-color: aqua;
+}
+.title-customer{
+	background-color:blueviolet
+}
+.title-family{
+	background-color: burlywood;
+}
+#customer-sector{
+	background-color: rgb(157, 182, 228);
+}
+#family-sector{
+	background-color: rgb(250, 246, 232);
+}
+#second{
+	background-color: lightblue;
+}
+#text-welcome{
+	
+	border-color: rgb(0, 0, 0);
+	font-style: italic;
+}
+#second{
+	background-image: url("img/end.jpg");
+}
+/*cards*/
+.flip-card {
+  background-color: transparent;
+  height: 300px; /* Es necesario una altura para que aparezca en la página */
+  border: 0px;
+  perspective: 3000px; /* Genera un efecto 3D */
+}
+
+/* Este contenedor nos posiciona los dos lados de la tarjeta */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+/* Crea la animación para girar la tarjeta de forma horizontal cuando el ratón se pone encima*/
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  /*transform: rotateX(180deg); /*si lo quieres con giro vertical*/
+}
+
+/* Estructura básica de las dos caras */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+   box-shadow: 10px 10px 28px -5px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+}
+
+/* Estructura específica de la cara frontal */
+/* Ajusta la imagen al tamaño de la tarjeta para hacerla adaptable*/
+.flip-card-front-post > img{
+    width: 100%;
+    height: 100%;
+    object-fit:cover;
+   
+}
+
+/* Estructura específica de la cara trasera */
+.flip-card-back {
+  background-color: 009DAE;
+  color: white;
+  transform: rotateY(180deg);
+}
+.flip-card-front{
+	background-color:71DFE7;
+}
+
+
+/*carrousel*/
+
+
+.pic-ctn {
+  width: 100vw;
+  height: 200px;
+}
+
+@keyframes display {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  10% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  20% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-200px);
+    opacity: 0;
+  }
+}
+
+.pic-ctn {
+  position: relative;
+  width: 100vw;
+  height: 300px;
+  margin-top: 15vh;
+}
+
+.pic-ctn > img {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 100px);
+  opacity: 0;
+  animation: display 10s infinite;
+}
+
+img:nth-child(2) {
+  animation-delay: 2s;
+}
+img:nth-child(3) {
+  animation-delay: 4s;
+}
+img:nth-child(4) {
+  animation-delay: 6s;
+}
+img:nth-child(5) {
+  animation-delay: 8s;
+}

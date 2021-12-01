@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 
 import Login.web.Entity.Family;
 import Login.web.Entity.House;
-import Login.web.Entity.User;
+import Login.web.Entity.UserEst;
 import Login.web.Repository.FamilyRepository;
 import Login.web.Repository.HouseRepository;
-import Login.web.Repository.UserRepository;
+import Login.web.Repository.UserEstRepository;
 
 
 @Service
@@ -21,21 +21,21 @@ public class FamilyService {
 	@Autowired
 	private FamilyRepository familyRepository;
 	@Autowired
-	private UserRepository userRepository;
+	private UserEstRepository userRepository;
 	@Autowired
 	private HouseRepository houseRepository;
 	
 	@Transactional
-	private void registerFamily( String name,Integer minAge,Integer maxAge, Integer numSons, String email, String idUser,String idHouse) throws Exception {
+	public void registerFamily( String name,Integer minAge,Integer maxAge, Integer numSons, String email, String userEstId) throws Exception {
 		validation(name, minAge, maxAge, numSons, email);
 		//find User
-		Optional<User>resOptionalUser=userRepository.findById(idUser);
+		Optional<UserEst>resOptionalUser=userRepository.findById(userEstId);
 		if (resOptionalUser.isPresent()) {
 			//creation of the user to set in the family
-			User user=resOptionalUser.get();
+			UserEst user=resOptionalUser.get();
 			//find the house
-			Optional<House>resOptionalHouse=houseRepository.findById(idHouse);
-			House house=resOptionalHouse.get();
+			//Optional<House>resOptionalHouse=houseRepository.findById(idHouse);
+			//House house=resOptionalHouse.get();
 			
 			//creation of the family
 			Family family=new Family();
@@ -45,25 +45,26 @@ public class FamilyService {
 			family.setNumSons(numSons);
 			family.setEmail(email);
 			family.setAlta(true);
-			family.setHouse(house);
+			family.setHouse(null);
 			family.setUser(user);
 			familyRepository.save(family);
 		}else {
 			throw new Exception("User is missing");
 		}
 	}
+
 	
 	@Transactional
-	private void modifyFamily(String id, String name,Integer minAge,Integer maxAge, Integer numSons, String email, String idUser,String idHouse) throws Exception {
+	public void modifyFamily(String id, String name,Integer minAge,Integer maxAge, Integer numSons, String email, String idUser,String idHouse) throws Exception {
 		validation(name, minAge, maxAge, numSons, email);
 		//find Family
 		Optional<Family>respOptional=familyRepository.findById(id);
 		if (respOptional.isPresent()) {
 			//find User
-			Optional<User>resOptionalUser=userRepository.findById(idUser);
+			Optional<UserEst>resOptionalUser=userRepository.findById(idUser);
 			if (resOptionalUser.isPresent()) {
 				//creation of the user to set in the family
-				User user=resOptionalUser.get();
+				UserEst user=resOptionalUser.get();
 				//find the house
 				Optional<House>resOptionalHouse=houseRepository.findById(idHouse);
 				House house=resOptionalHouse.get();
@@ -112,6 +113,15 @@ public class FamilyService {
 	}
 	
 	
+	public Family findForIdUser(String idUser) throws Exception {
+		
+		Family respOptional=familyRepository.findForIdUser(idUser);
+		if(respOptional !=null) {
+			return respOptional;
+		}else {
+			throw new Exception("The wanted family is not.");
+		}
+	}
 	
 	private void validation( String name,Integer minAge,Integer maxAge, Integer numSons, String email) throws Exception {
 		

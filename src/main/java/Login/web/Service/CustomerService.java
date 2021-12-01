@@ -9,25 +9,25 @@ import org.springframework.stereotype.Service;
 
 import Login.web.Entity.Customer;
 
-import Login.web.Entity.User;
+import Login.web.Entity.UserEst;
 import Login.web.Repository.CustomerRepository;
 
-import Login.web.Repository.UserRepository;
+import Login.web.Repository.UserEstRepository;
 
 @Service
 public class CustomerService {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserEstRepository userRepository;
 	@Autowired
 	private CustomerRepository customerRepository;
 	
 	
 	public void register(String name, String street,Integer number,String postalCode,String city,String country,String email,String idUser) throws Exception {
 		
-		Optional<User>respOptional=userRepository.findById(idUser);
+		Optional<UserEst>respOptional=userRepository.findById(idUser);
 		if (respOptional.isPresent()) {
-			User user=respOptional.get();
+			UserEst user=respOptional.get();
 			Customer customer=new Customer();
 			validation(name, street, number, postalCode, city, country, email);
 			customer.setName(name);
@@ -53,9 +53,9 @@ public class CustomerService {
 	if(resOptional.isPresent()) {
 		Customer customer=resOptional.get();
 		validation(name, street, number, postalCode, city, country, email);
-		Optional<User>respOptionalUser=userRepository.findById(idUser);
+		Optional<UserEst>respOptionalUser=userRepository.findById(idUser);
 		if (respOptionalUser.isPresent()) {
-			User user=respOptionalUser.get();
+			UserEst user=respOptionalUser.get();
 			customer.setName(name);
 			customer.setStreet(street);
 			customer.setNumber(number);
