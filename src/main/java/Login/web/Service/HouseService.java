@@ -33,6 +33,7 @@ public class HouseService {
 	@Autowired
 	private FotoService fotoService;
 	
+	
 	@Transactional
 	public void registerHouse(MultipartFile archivo, String id , String street, Integer number, String postalCode , String city, String country ,Date dateFrom , Date dateTo ,Integer minDays , Integer maxDays , Double priceDouble , String tipePlace) throws Exception {
 	  validation(street, number, postalCode, city, country, dateFrom, dateTo, minDays, maxDays, priceDouble, tipePlace);
@@ -65,14 +66,14 @@ public class HouseService {
 	  
 
 	}
-	
-	public void modifyHouse(MultipartFile archivo, String idHouse, String street, Integer number, String postalCode , String city, String country ,Date dateFrom , Date dateTo ,Integer minDays , Integer maxDays , Double priceDouble , String tipePlace  ) throws Exception {
+	@Transactional
+	public void modifyHouse(MultipartFile archivo, String id, String street, Integer number, String postalCode , String city, String country ,Date dateFrom , Date dateTo ,Integer minDays , Integer maxDays , Double priceDouble , String tipePlace  ) throws Exception {
 		validation(street, number, postalCode, city, country, dateFrom, dateTo, minDays, maxDays, priceDouble, tipePlace);
 		//looking for the house that you want to modify
-		Optional<House>respOptional=houseRepository.findById(idHouse);
+		Optional<House>respOptional=houseRepository.findById(id);
 		if(respOptional.isPresent()) {
 			House house=respOptional.get();
-			
+	
 				  house.setStreet(street);
 				  house.setNumber(number);
 				  house.setPostalCode(postalCode);
@@ -84,13 +85,26 @@ public class HouseService {
 				  house.setMaxDays(maxDays);
 				  house.setPrice(priceDouble);
 				  house.setTipePlace(tipePlace);
-				  house.setAlta(true);
+				 
+				// If the file contains photo 
+				  if (!archivo.isEmpty()) {
+				  String idFoto = null;
+				// The photo I already had is added to the idFoto
+				  if (house.getFoto() != null) {
+					  idFoto = house.getFoto().getId();
+						}
+				 // Otherwise update it
+				   Foto foto = fotoService.actualizarFoto(idFoto, archivo);
+					house.setFoto(foto);
+
+				  
 				  houseRepository.save(house);
 			
 			
 		}else {
 			throw new Exception("The id does not correspond to some house.");
 		}
+	}
 	}
 	//Delete house Implements boolean?
 	public void delete(String id) throws Exception {
@@ -106,7 +120,7 @@ public class HouseService {
 		}
 	}
 	public List<House> listAllHouse() throws Exception{
-		List<House>respOptional=houseRepository.findHousesForUserAlta();//.findAll()
+		List<House>respOptional=houseRepository.findHousesForUserAlta();
 		if(!respOptional.isEmpty()) {
 			
 				return respOptional;
@@ -120,7 +134,7 @@ public class HouseService {
 		if(resp.isPresent()) {
 			return resp.get();
 		}else {
-			throw new Exception("ERRORRRRR");
+			throw new Exception("The house not Exist.");
 		}
 	}
 	public List<House> findHouseForUser(String id){

@@ -64,11 +64,12 @@
         </div>
          
            
-           
+        
            
       </div>
         <div class="col-12 col-md-12 col-lg-12" id="family-sector">
           <h2 class="title-customer">House's sector</h2>
+          
        <div class="container">
             <h2>House's of Family</h2>
              <input type="hidden" name="id" th:value="${session.usersession.id}" >
@@ -87,7 +88,7 @@
                   <th>Minimun Days</th>
                   <th>Maximun Days</th>
                   <th>Tipe Place </th>
-                  <th>Price</th>
+                  <th>Price  night</th>
                   <th>Up/Down</th>
                   <th>Actions</th>
                  
@@ -113,20 +114,11 @@
                   <td th:text="${house.price}"></td>
                    <td th:text="${house.alta}"></td>
                   <td >
-                  <a th:href="@{/house/modify/__${house.id}__}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-up"></i>Modify</a>
+                  <a th:href="@{/house/modify/__${house.id}__}" class="btn btn-primary btn-sm"> <i class="fa fa-arrow-up"></i>Modify House</a>
 				 <a th:href="@{/house/delete/__${house.id}__}" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i>&nbsp;   Delete/Down   </a>
 				  <a th:href="@{/house/alta/__${house.id}__}" class="btn btn-warning btn-sm"> <i class="fa fa-trash"></i>&nbsp;   To register  </a>
 				
-                  </td>
-                 
-                  <form>
-                  
-               		
-                               
-                  
-                  </form>
-					  
-                  </td>
+                
                 </tr>
               
               </tbody>

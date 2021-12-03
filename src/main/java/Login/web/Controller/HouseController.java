@@ -85,18 +85,16 @@ public class HouseController {
 	}
 	
 	@PostMapping("/modify/{id}")
-	public String modificarHouse(MultipartFile archivo,@PathVariable String id,  ModelMap modelo ,@RequestParam String street,@RequestParam Integer number,@RequestParam String postalCode,@RequestParam String city,@RequestParam String country,@RequestParam (required = false) @DateTimeFormat(pattern = "yyyy-MM-dd" )Date dateFrom ,@RequestParam (required = false) @DateTimeFormat(pattern = "yyyy-MM-dd" )Date dateTo,
+	public String modificarHouse(MultipartFile archivo,@RequestParam String id,  ModelMap modelo ,@RequestParam String street,@RequestParam Integer number,@RequestParam String postalCode,@RequestParam String city,@RequestParam String country,@RequestParam (required = false) @DateTimeFormat(pattern = "yyyy-MM-dd" )Date dateFrom ,@RequestParam (required = false) @DateTimeFormat(pattern = "yyyy-MM-dd" )Date dateTo,
 			@RequestParam Integer minDays,@RequestParam Integer maxDays,@RequestParam Double price,@RequestParam String tipePlace) {	
 			try {
 				houseService.modifyHouse(archivo, id, street, number, postalCode, city, country, dateFrom, dateTo, minDays, maxDays, price, tipePlace);
 				modelo.put("exito", "Successfully modified");
-				
 			} catch (Exception e) {
 				modelo.put("error", "The rental could not be modified, check the data entered");
-				e.printStackTrace();
-				
+				e.printStackTrace();	
 			}
-			return "redirect:/house/allHouseUser";
+			return "redirect:/house/allHouseUser";	
 		
 	}
 	@GetMapping("/delete/{id}")
