@@ -51,14 +51,14 @@
 
 
 	</div>
-	<div class="col-12 col-md-12 col-lg-12" id="family-sector">
+	<div class="col-12 col-md-12 col-lg-12" id="tercer">
 		<h2 class="title-customer">House's sector</h2>
 
 		<div class="container">
 			<h4>Modify your description or add a comment</h4>
 			<input type="hidden" name="id" th:value="${session.usersession.id}">
 
-			<div class="align-items-center"th:each="house : ${house}">
+			<div class="align-items-center" th:each="house : ${house}">
 				<a th:href="@{/house/modify/__${house.id}__}" class="btn btn-primary btn-sm"> <i
 						class="fa fa-arrow-up"></i>Modify House</a>
 				<a th:href="@{/house/delete/__${house.id}__}" class="btn btn-danger btn-sm"> <i

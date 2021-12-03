@@ -17,7 +17,7 @@
 			class="btn btn-danger btn-xl  mt-5 float-right">LogOut</a>
 	</div>
 
-	<title>Book Store</title>
+	<title>Estancias.com</title>
 
 	<!--FONTAWESOME-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -134,7 +134,7 @@
 
 							</div>
 
-							<!-- <a th:href="@{/family/addHouse(id=__${session.usersession.id}__))}" class="btn  btn-info ">  Add House's </i></a>-->
+							
 							<button class="mt-4	">
 								<a th:href="@{/family/addHouse(id=__${session.usersession.id}__)}"
 									th:if="${session.usersession != null}" class="btn btn-primary btn-xl   ">Add
@@ -162,30 +162,17 @@
 
 	</div>
 	
-	<div class="container">
-	<div class="row">
-		<div class="pic-ctn">
-			<img src="../img/carrousel5.jpg" alt="" class="pic">
-			<img src="../img/carrousel1.jpg" alt="" class="pic">
-			<img src="../img/carrousel2.jpg" alt="" class="pic">
-			<img src="../img/carrousel3.jpg " alt="" class="pic">
-			<img src="../img/carrousel4.jpg" alt="" class="pic">
-		</div>
-	</div>	
-	</div>
+	
 
 
 
 	<div id="footer" class="footer">
-		<p class="text-center text-white">
+		<p class="text-center ">
 			All rights reserved. <br>For job suggestions write me on <i>walterio12345@gmail.com</i>
 		</p>
 
 	</div>
-	<!--<footer th:replace="/fragments/footer :: footer"></footer>-->
-<!--javascript-->
- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
- <script src="/JS/java.js"></script>
+
  
 </body>
 

@@ -11,26 +11,46 @@ body{
 	
 	
 }
-.navbar{
-	color:green;
-}
-.main{
-	background-color: aqua;
-}
+
 .title-customer{
-	background-color:blueviolet
+	background-color:B4FE98;
 }
 .title-family{
-	background-color: burlywood;
-}
-#customer-sector{
-	background-color: rgb(157, 182, 228);
+	background-color: C89595;
 }
 #family-sector{
-	background-color: rgb(250, 246, 232);
+	background: rgba( 248, 231, 28, 0.5 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+
+#customer-sector{
+background: rgba( 93, 94, 182, 0.75 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+#tercer{
+background: rgba( 247, 236, 119, 0.4 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 20px );
+-webkit-backdrop-filter: blur( 20px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 #second{
-	background-color: lightblue;
+	background: rgba( 24, 98, 176, 0.2 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 8.5px );
+-webkit-backdrop-filter: blur( 8.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+	
 }
 #text-welcome{
 	
@@ -158,4 +178,12 @@ img:nth-child(5) {
 }
 #btn-rent{
 	background-color: FC997C;
+}
+#card-container{
+	background: rgba( 24, 98, 176, 0.2 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 8.5px );
+-webkit-backdrop-filter: blur( 8.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }

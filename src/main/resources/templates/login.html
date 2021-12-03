@@ -6,7 +6,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Book Store</title>
+  <title>Estancias.com</title>
 
   <!--FONTAWESOME-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
@@ -41,12 +41,13 @@
                 <button class="btn btn-lg btn-primary btn-block" type="submit">
                     Sign in</button>
                 
-                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+               <a th:href="@{/registro}" class="text-center new-account text-success">Create an account </a>
                 </form>
             </div>
-            <a th:href="@{/registro}" class="text-center new-account">Create an account </a>
+            
         </div>
-    </div>
+   
 </div>
+ 
 </body>
 </html>
