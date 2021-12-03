@@ -23,7 +23,7 @@
 	<!-- Custom styles for this template -->
 	<link rel="stylesheet" href="/Css/style3.css">
 	<h2 class="masthead-subheading mb-0 text-center " id="text-welcome" th:if="${session.usersession != null}"
-		th:text="${'Welcome: ' + session.usersession.alias }"></h2>
+		th:text="${'You are browsing as: ' + session.usersession.alias }"></h2>
 
 	</div>
 
@@ -37,14 +37,10 @@
 			</a>
 		</div>
 		<div class="col-8 col-md-12 col-lg-6 col-sm-8 text-right">
-			<a th:href="@{/inicio}" class="btn btn-danger btn-md "> Back </a>
+			<a th:href="@{/house/allHouseUser}" class="btn btn-danger btn-md "> Back </a>
 
 		</div>
 	</nav>
-
-
-
-
 
 
 	<div class="second ">
@@ -83,7 +79,7 @@
 												<div class="col-xs-6 col-sm-6 col-md-6">
 													<div class="form-group">
 														<input type="number" name="number" class="form-control input-sm"
-															placeholder="Number of street." >
+															placeholder="Number of street.">
 														<p></p>
 													</div>
 												</div>
@@ -124,30 +120,33 @@
 												</div>
 											</div>
 
-											<h4 class="text-left ">Date From:</h4>
-											<div class="input-group mb-3 ">
-												<div class="input-group-prepend">
-
-												</div>
-												<input type="date" class="form-control" placeholder="Fecha Prestamo"
-													name="dateFrom">
-
-											</div>
-
-											<h4 class="text-left ">Date To:</h4>
 
 											<div class="input-group mb-3 ">
-												<input type="date" class="form-control"
-													placeholder="Posible fecha de devolucion" name="dateTo">
-												<div class="input-group-append">
+												<div class="col-xs-4 col-sm-4 col-md-4">
+													<h4 class="text-left ">Date From:</h4>
+													<input type="date" class="form-control"
+														placeholder="Posible fecha de devolucion" name="dateFrom">
+													<div class="input-group-append">
 
+													</div>
 												</div>
+
+												<div class="col-xs-4 col-sm-4 col-md-4">
+													<h4>Date To:</h4>
+													<input type="date" class="form-control" placeholder="date to"
+														name="dateTo">
+													<div class="input-group-append">
+
+													</div>
+												</div>
+
 
 												<br>
 
 												<br>
 
-												<div class="col-xs-6 col-sm-6 col-md-6">
+												<div class="col-xs-4 col-sm-4 col-md-4">
+													<h4 class="text-left ">Price per night:</h4>
 													<div class="form-group">
 														<input type="number" name="price" class="form-control input-sm"
 															placeholder="Price for night." min="1" max="1000">
