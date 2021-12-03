@@ -1,5 +1,5 @@
-<div th:fragment="_card" class="card my-4">
-	<div class="col-12 mb-5">
+<div th:fragment="_card" class="card my-5">
+	<div class="col-12 mb-6">
 		<div class="card flip-card">
 			<div class="flip-card-inner">
 				<div class="flip-card-front ">
@@ -13,6 +13,7 @@
 					<p class="card-text">Tipe Place: <span th:text="${house.tipePlace}"></span></p>
 					<p class="card-text">Street: <span th:text="${house.street}"></span></p>
 					<p class="card-text">Number: <span th:text="${house.number}"></span></p>
+					
 
 				</div>
 				<div class="flip-card-back">
@@ -30,14 +31,15 @@
 							<p th:if="${house.alta} == true" class="card-text">Date To: <span
 									th:text="${house.dateTo}"></span></p>
 							<p th:if="${house.alta} == false">Not available</p>
+						
 
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<a href="#" class="btn btn-outline-dark " id="btn-comentary" type="submit">Comentary</a> 
-		<a href="#" class="btn btn-outline-dark " id="btn-rent"type="submit">:--- Rent ---:  </a>  
+		
+		<a href="#" class="btn btn-outline-dark btn-block" id="btn-rent"type="submit">:--- Rent ---:  </a>  
 	</div>
 
 </div>

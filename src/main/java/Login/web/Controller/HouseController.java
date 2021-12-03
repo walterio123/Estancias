@@ -23,6 +23,7 @@ import Login.web.Entity.Family;
 import Login.web.Entity.House;
 import Login.web.Entity.UserEst;
 import Login.web.Repository.HouseRepository;
+import Login.web.Service.CommentService;
 import Login.web.Service.FamilyService;
 import Login.web.Service.HouseService;
 
@@ -36,6 +37,7 @@ public class HouseController {
 	private FamilyService familyService;
 	@Autowired
 	private HouseRepository houseRepository;
+	
 	
 	@GetMapping("/all")
 	public String listHouse(Model model){
@@ -119,4 +121,6 @@ public class HouseController {
         }
         return "redirect:/house/allHouseUser";
     }
+	
+	
 }

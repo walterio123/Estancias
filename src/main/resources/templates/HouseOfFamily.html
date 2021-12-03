@@ -55,12 +55,24 @@
 		<h2 class="title-customer">House's sector</h2>
 
 		<div class="container">
-			<h2>House's of Family</h2>
+			<h4>Modify your description or add a comment</h4>
 			<input type="hidden" name="id" th:value="${session.usersession.id}">
+
+			<div class="align-items-center"th:each="house : ${house}">
+				<a th:href="@{/house/modify/__${house.id}__}" class="btn btn-primary btn-sm"> <i
+						class="fa fa-arrow-up"></i>Modify House</a>
+				<a th:href="@{/house/delete/__${house.id}__}" class="btn btn-danger btn-sm"> <i
+						class="fa fa-arrow-down"></i>&nbsp; Delete/Down </a>
+				<a th:href="@{/house/alta/__${house.id}__}" class="btn btn-warning btn-sm"> <i
+						class="fa fa-arrow-up"></i>&nbsp; To register </a>
+				<a th:href="@{/comment/addComment/__${house.id}__}" class="btn btn-secondary btn-sm">
+					<i></i>&nbsp; Add Comment </a>
+			</div>
 
 			<table class="table table-hover ">
 				<thead>
 					<tr>
+						<th>Comentary</th>
 						<th>Foto</th>
 						<th>Street</th>
 						<th>Number</th>
@@ -74,12 +86,15 @@
 						<th>Tipe Place </th>
 						<th>Price night</th>
 						<th>Up/Down</th>
-						<th>Actions</th>
+
 
 					</tr>
 				</thead>
+
 				<tbody th:each="house : ${house}">
 					<tr>
+						<td th:if="${house.comment == null}" th:text="${'No comment.' }"></td>
+						<td th:if="${house.comment != null}" th:text="${house.comment.description}"></td>
 						<th> <img th:if="${house.foto != null}" th:src="${'/foto/house/' + house.id}" alt=""
 								style="max-height: 60px; ">
 							<img th:if="${house.foto == null}" src="../img/casaneutra.jpg" alt=""
@@ -97,19 +112,12 @@
 						<td th:text="${house.tipePlace}"></td>
 						<td th:text="${house.price}"></td>
 						<td th:text="${house.alta}"></td>
-						<td>
-							<a th:href="@{/house/modify/__${house.id}__}" class="btn btn-primary btn-sm"> <i
-									class="fa fa-arrow-up"></i>Modify House</a>
-							<a th:href="@{/house/delete/__${house.id}__}" class="btn btn-danger btn-sm"> <i
-									class="fa fa-trash"></i>&nbsp; Delete/Down </a>
-							<a th:href="@{/house/alta/__${house.id}__}" class="btn btn-warning btn-sm"> <i
-									class="fa fa-trash"></i>&nbsp; To register </a>
-
 
 					</tr>
 
 				</tbody>
 			</table>
+
 		</div>
 
 
